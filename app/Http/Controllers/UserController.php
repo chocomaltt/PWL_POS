@@ -24,6 +24,7 @@ class UserController extends Controller
         // $user = UserModel::all();
         // return view('user', ['data'=>$user]);
 
+        // PRAKTIKUM 1 : $FILLABLE
         // $data = [
         //     'level_id' => 2,
         //     'username' => 'manager_dua',
@@ -32,15 +33,23 @@ class UserController extends Controller
         // ];
         // UserModel::create($data);
             
-        $data = [
-            'level_id' => 2,
-            'username' => 'manager_tiga',
-            'nama' => 'Manager 3',
-            'password' => Hash::make('12345')
-        ];
-        UserModel::create($data);
+        // $data = [
+        //     'level_id' => 2,
+        //     'username' => 'manager_tiga',
+        //     'nama' => 'Manager 3',
+        //     'password' => Hash::make('12345')
+        // ];
+        // UserModel::create($data);
 
-        $user = UserModel::all();
+        // PRAKTIKUM 2.1 : Retrieving Single Models
+        
+        // $user = UserModel::all();
+        // $user = UserModel::find(4);
+        // $user = UserModel::where('level_id', 6)->first();
+        // $user = UserModel::firstWhere('level_id', 1);
+        $user = UserModel::findOr(20, ['username', 'nama'], function(){
+            abort(404);
+        });
         return view('user', ['data'=>$user]);
     }      
 }
