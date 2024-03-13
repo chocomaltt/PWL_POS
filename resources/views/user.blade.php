@@ -27,7 +27,7 @@
             <td>{{ $d->nama }}</td>
             <td>{{ $d->level_id }}</td>
             <td>{{ $d->level->level_kode }}</td>
-            <td>{{ $d->level->level_nama }}</td>
+            <td>{{ $d->level->level_nama }}111</td>
             <td><a href="{{ route('/user/ubah', $d->user_id)}}">Ubah</a> | <a href="{{ route('/user/hapus', $d->user_id)}}">Hapus</a></td>
 
             {{-- Untuk Menampilkan Hasil Dari Count() --}}
