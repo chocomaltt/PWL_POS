@@ -10,8 +10,9 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Manage Kategori</div>
-            <div class="card-body">
+            <div class="card-body w-100 flex-col">
                 {{ $dataTable->table() }}
+                <a href="{{ route('/kategori/create') }}" class="btn btn-success mt-2">Tambah Kategori</a>
             </div>
         </div>
     </div>
