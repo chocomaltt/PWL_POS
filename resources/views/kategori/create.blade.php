@@ -17,7 +17,10 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="kodeKategori">Kode Kategori</label>
-                        <input type="text" class="form-control" name="kodeKategori" id="kodeKategori" placeholder="Kode Kategori">
+                        <input type="text" class="form-control @error('kategori_kode') is-invalid @enderror" name="kategori_kode" id="kodeKategori" placeholder="Kode Kategori">
+                        @error('kategori_kode')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="namaKateogir">Nama Kategori</label>
@@ -28,6 +31,15 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </form>
         </div>
     </div>
