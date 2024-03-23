@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use App\DataTables\LevelDataTable;
+use App\Models\LevelModel;
 
 class LevelController extends Controller
 {
@@ -29,5 +31,14 @@ class LevelController extends Controller
 
     public function create(){
         return view('level.create');
+    }
+
+    public function store(Request $request): RedirectResponse{
+        $validated = $request->validate([
+            'level_kode'=>'required',
+            'level_nama'=>'required'
+        ]);
+
+        return redirect('/level');
     }
 }

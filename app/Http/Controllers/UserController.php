@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\DataTables\UserDataTable;
@@ -132,13 +133,19 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function tambah_simpan(Request $request){
-        UserModel::create([
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => Hash::make($request->password),
-            'level_id' => $request->level_id
+    public function tambah_simpan(Request $request): RedirectResponse{
+        // UserModel::create
+        $validated= $request->validate([
+            // 'username' => $request->username,
+            // 'nama' => $request->nama,
+            // 'level_id' => $request->level_id,
+            // 'password' => Hash::make($request->password)
+            'username'=>'required',
+            'nama'=>'required',
+            'level_id'=>'required',
+            'password'=>'required'
         ]);
+
         return redirect('/user');
     }
 
