@@ -4,6 +4,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\POSController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // praktikum 4
 // Route::get('/kategori', [KategoriController::class, 'index']);
@@ -44,3 +45,5 @@ Route::resource('m_user', POSController::class);
 Route::get('/level', [LevelController::class, 'index'])->name('/level');
 Route::get('level/create', [LevelController::class, 'create'])->name('/level/create');
 Route::post('/level', [LevelController::class, 'store']);
+
+Route::get('/', [WelcomeController::class, 'index']);
