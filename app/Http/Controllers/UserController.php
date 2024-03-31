@@ -26,7 +26,9 @@ class UserController extends Controller
 
         $activeMenu = 'user';
 
-        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
+        $level = LevelModel::all();
+
+        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
     }
 
     public function show(string $id)
@@ -141,7 +143,7 @@ class UserController extends Controller
             UserModel::destroy($id);
             return redirect('/user')->with('success', 'Data user berhasil dihapus');
         } catch (\Illuminate\Database\QueryException $e){
-            return redirect('/user')->with('error', 'Data user gagal dihaus karena masih terdapat tabel lain yang terkait dengan data ini');
+            return redirect('/user')->with('error', 'Data user gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
 
@@ -165,6 +167,11 @@ class UserController extends Controller
 
     public function list(Request $request) {
         $users = UserModel::select('user_id', 'username', 'nama', 'level_id')->with('level');
+
+        if($request->level_id){
+            $users->where('level_id', $request->level_id);
+        }
+
         return DataTables::of($users)
         ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
         ->addColumn('aksi', function ($user) {
