@@ -102,7 +102,7 @@ class StokController extends Controller
 
         $activeMenu = 'stok';
 
-        return view('stok.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'barang' => $barang, 'user' => $user, 'activeMenu' => $activeMenu]);
+        return view('stok.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'stok' => $stok, 'barang' => $barang, 'user' => $user, 'activeMenu' => $activeMenu]);
     }
 
     public function update(Request $request, string $id)
