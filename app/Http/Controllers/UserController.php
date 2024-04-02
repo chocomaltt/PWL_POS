@@ -107,7 +107,7 @@ class UserController extends Controller
         UserModel::find($id)->update([
             'username' => $request->username,
             'nama' => $request->nama,
-            'password' => $request->password ? bycrypt($request->password) : UserModel::find($id)->password,
+            'password' => $request->password ? bcrypt($request->password) : UserModel::find($id)->password,
             'level_id' => $request->level_id
         ]);
 
