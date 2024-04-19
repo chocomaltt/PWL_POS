@@ -18,11 +18,13 @@ class PenjualanSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             $user_id = rand(1, 3);
             $pembeli = 'Pembeli ' . $i;
+            $barang_id = rand(1,3);
             $penjualan_kode = 'PJ00' . $i;
 
             $data[] = [
                 'user_id' => $user_id,
                 'pembeli' => $pembeli,
+                'barang_id' => $barang_id,
                 'penjualan_kode' => $penjualan_kode,
                 'penjualan_tanggal' => now(),
             ];

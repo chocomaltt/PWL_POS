@@ -110,11 +110,11 @@ class StokController extends Controller
         $request->validate([
             'barang_id' => 'required|integer',
             'user_id' => 'required|integer',
-            'stok_tanggal' => 'required|datetime',
+            'stok_tanggal' => 'required|date',
             'stok_jumlah' => 'required|integer',
         ]);
 
-        BarangModel::find($id)->update([
+        StokModel::find($id)->update([
             'barang_id' => $request->barang_id,
             'user_id' => $request->user_id,
             'stok_tanggal' => $request->stok_tanggal,
@@ -142,6 +142,10 @@ class StokController extends Controller
     public function list(Request $request)
     {
         $stoks = StokModel::select('stok_id' ,'barang_id', 'user_id', 'stok_tanggal', 'stok_jumlah')->with('barang','user');
+
+        if($request->barang_id){
+            $stoks->where('barang_id', $request->barang_id);
+        }
 
         return DataTables::of($stoks)
         ->addIndexColumn()

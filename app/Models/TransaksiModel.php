@@ -11,10 +11,15 @@ class TransaksiModel extends Model
     protected $table = 't_penjualan';
     protected $primaryKey = 'penjualan_id';
 
-    protected $fillable = ['user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal'];
+    protected $fillable = ['user_id', 'pembeli', 'penjualan_kode', 'barang_id','penjualan_tanggal'];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
+    }
+
+    public function barang(): BelongsTo
+    {
+        return $this->belongsTo(BarangModel::class, 'barang_id', 'barang_id');
     }
 }

@@ -20,6 +20,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Kulkas',
                 'harga_beli' => 8000000,
                 'harga_jual' => 10000000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 1,
@@ -27,6 +29,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Mesin Cuci',
                 'harga_beli' => 9000000,
                 'harga_jual' => 11000000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 2,
@@ -34,6 +38,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Celana Pendek',
                 'harga_beli' => 50000,
                 'harga_jual' => 75000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 2,
@@ -41,6 +47,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Kaos Polos Hitam',
                 'harga_beli' => 60000,
                 'harga_jual' => 85000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 3,
@@ -48,6 +56,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Marie Regal 1kg',
                 'harga_beli' => 250000,
                 'harga_jual' => 300000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 3,
@@ -55,6 +65,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Butter Wisjman',
                 'harga_beli' => 350000,
                 'harga_jual' => 400000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 4,
@@ -62,6 +74,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Pulpen Gel',
                 'harga_beli' => 3000,
                 'harga_jual' => 4000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 4,
@@ -69,6 +83,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Pensil 2B',
                 'harga_beli' => 5000,
                 'harga_jual' => 6000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 5,
@@ -76,6 +92,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Detergen Top Load',
                 'harga_beli' => 75000,
                 'harga_jual' => 90000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'kategori_id' => 5,
@@ -83,6 +101,8 @@ class BarangSeeder extends Seeder
                 'barang_nama' => 'Pembersih Kaca',
                 'harga_beli' => 8500,
                 'harga_jual' => 10000,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
         ];
 

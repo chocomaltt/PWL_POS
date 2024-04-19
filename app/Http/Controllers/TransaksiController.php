@@ -27,8 +27,9 @@ class TransaksiController extends Controller
         $activeMenu = 'transaksi';
 
         $user = UserModel::all();
+        $barang = BarangModel::all();
 
-        return view('transaksi.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
+        return view('transaksi.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'barang' => $barang,'activeMenu' => $activeMenu]);
         
     }
     public function show(string $id)
@@ -59,9 +60,10 @@ class TransaksiController extends Controller
         ];
 
         $user = UserModel::all();
-        $activeMenu = 'stok';
+        $barang = BarangModel::all();
+        $activeMenu = 'transaksi';
 
-        return view('transaksi.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
+        return view('transaksi.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'barang' => $barang,'activeMenu' => $activeMenu]);
     }
 
     public function store(Request $request)
@@ -69,6 +71,7 @@ class TransaksiController extends Controller
         $request->validate([
             'user_id' => 'required|integer',
             'pembeli' => 'required|string|max:50',
+            'barang_id' => 'required|integer',
             'penjualan_kode' => 'required|string|max:20',
             'penjualan_tanggal' => 'required|date',
         ]);
@@ -76,6 +79,7 @@ class TransaksiController extends Controller
         TransaksiModel::create([
             'user_id' => $request->user_id,
             'pembeli' => $request->pembeli,
+            'barang_id' => $request->barang_id,
             'penjualan_kode' => $request->penjualan_kode,
             'penjualan_tanggal' => $request->penjualan_tanggal,
         ]);
@@ -138,7 +142,7 @@ class TransaksiController extends Controller
 
     public function list(Request $request)
     {
-        $transaksis = TransaksiModel::select('penjualan_id', 'user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal')->with('user');
+        $transaksis = TransaksiModel::select('penjualan_id', 'user_id', 'pembeli', 'penjualan_kode', 'barang_id', 'penjualan_tanggal')->with('user', 'barang');
 
         if($request->user_id){
             $transaksis->where('user_id', $request->user_id);

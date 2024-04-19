@@ -40,6 +40,7 @@
                         <th>Nama User</th>
                         <th>Nama Pembeli</th>
                         <th>Kode Penjualan</th>
+                        <th>Nama Barang</th>
                         <th>Tanggal Penjualan</th>
                         <th>Aksi</th>
                     </tr>
@@ -83,6 +84,11 @@
                         searchable: true
                     },{
                         data: "penjualan_kode",
+                        className: "",
+                        orderable: false,   // orderable: false, jika ingin kolom ini tidak bisa diurutkan
+                        searchable: false, // searchable: false, jika ingin kolom ini tidak bisa dicari
+                    },{
+                        data: "barang.barang_nama",
                         className: "",
                         orderable: false,   // orderable: false, jika ingin kolom ini tidak bisa diurutkan
                         searchable: false, // searchable: false, jika ingin kolom ini tidak bisa dicari
