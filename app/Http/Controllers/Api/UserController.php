@@ -24,10 +24,11 @@ class UserController extends Controller
         return UserModel::find($user);
     }
 
-    public function update(Request $request, UserModel $user)
+    public function update(Request $request, string $user_id)
     {
+        $user = UserModel::find($user_id);
         $user->update($request->all());
-        return UserModel::find($user);
+        return UserModel::find($user_id);
     }
 
     public function destroy(UserModel $user)

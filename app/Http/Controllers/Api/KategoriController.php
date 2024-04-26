@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\KategoriModel;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 
 class KategoriController extends Controller
 {
@@ -19,15 +21,16 @@ class KategoriController extends Controller
         return response()->json($kategori, 201);
     }
 
-    public function show(KategoriModel $kategori)
+    public function show(KategoriModel $kategori_id)
     {
-        return KategoriModel::find($kategori);
+        return KategoriModel::find($kategori_id);
     }
 
-    public function update(Request $request, KategoriModel $kategori)
+    public function update(Request $request, string $kategori_id)
     {
+        $kategori = KategoriModel::find($kategori_id);
         $kategori->update($request->all());
-        return KategoriModel::find($kategori);
+        return KategoriModel::find($kategori_id);
     }
 
     public function destroy(KategoriModel $kategori)
