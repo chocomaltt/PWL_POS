@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\BarangController;
 use App\Http\Controllers\Api\KategoriController;
+use App\Http\Controllers\Api\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,12 @@ Route::group(['prefix' => 'kategoris'], function(){
     Route::get('/{kategori}', [KategoriController::class, 'show']);
     Route::put('/{kategori}', [KategoriController::class, 'update']);
     Route::delete('/{kategori}', [KategoriController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'transaksi'], function(){
+    Route::get('/', [TransaksiController::class, 'index']);
+    Route::post('/', [TransaksiController::class, 'store']);
+    Route::get('/{transaksi}', [TransaksiController::class, 'show']);
+    Route::put('/{transaksi}', [TransaksiController::class, 'update']);
+    Route::delete('/{transaksi}', [TransaksiController::class, 'destroy']);
 });
